@@ -1,0 +1,16 @@
+{
+  "name": "my-codewar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "codewar.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "ts-jest": "^23.1.3"
+  }
+}
