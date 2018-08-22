@@ -291,3 +291,63 @@ function thirt(n) {
     return result;
 }
 exports.thirt = thirt;
+//7 kyu : Possiblities Array
+function isAllPossibilities(x) {
+    let f = x.filter((v, i) => x.indexOf(v) === i);
+    if (f.length != x.length)
+        return false;
+    let pass1 = f.some(v => v === 0);
+    let pass2 = x.some(v => v == x.length - 1);
+    return (pass1 && pass2);
+}
+exports.isAllPossibilities = isAllPossibilities;
+// 7 kyu : Complementary DNA
+function dnaStrand(dna) {
+    let T = dna.replace(/A|T|G|C/gi, (v, i, a) => {
+        switch (v) {
+            case "A": return "T";
+            case "T": return "A";
+            case "C": return "G";
+            case "G": return "C";
+        }
+    });
+    return T;
+}
+exports.dnaStrand = dnaStrand;
+// 7 kyu : Digital cypher
+function encode(str, n) {
+    const keys = new Map();
+    keys.set("a", 1);
+    keys.set("b", 2);
+    keys.set("c", 3);
+    keys.set("d", 4);
+    keys.set("e", 5);
+    keys.set("f", 6);
+    keys.set("g", 7);
+    keys.set("h", 8);
+    keys.set("i", 9);
+    keys.set("j", 10);
+    keys.set("k", 11);
+    keys.set("l", 12);
+    keys.set("m", 13);
+    keys.set("n", 14);
+    keys.set("o", 15);
+    keys.set("p", 16);
+    keys.set("q", 17);
+    keys.set("r", 18);
+    keys.set("s", 19);
+    keys.set("t", 20);
+    keys.set("u", 21);
+    keys.set("v", 22);
+    keys.set("w", 23);
+    keys.set("x", 24);
+    keys.set("y", 25);
+    keys.set("z", 26);
+    let key = n.toString().split('');
+    let text = str.split('');
+    let r = text.map((v, i) => {
+        return keys.get(v) + Number(key[i % key.length]);
+    });
+    return r;
+}
+exports.encode = encode;
