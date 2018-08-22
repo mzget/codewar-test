@@ -4,7 +4,7 @@
   "description": "",
   "main": "codewar.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",

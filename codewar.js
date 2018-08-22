@@ -238,3 +238,56 @@ function removeChar(str) {
     return str.slice(1, str.length - 1);
 }
 exports.removeChar = removeChar;
+//6 kyu Your order, please
+function order(words) {
+    if (!words)
+        return "";
+    let splitWord = words.split(" ");
+    let s = words.match(/\d+/g).map(Number);
+    let mapped = splitWord.map((v, i) => ({ word: v, id: i, numb: s[i] }));
+    let result = mapped.sort(function (a, b) { return a.numb - b.numb; }).map(item => item.word).join(" ");
+    return result;
+}
+exports.order = order;
+// 6 kyu : Length of missing array
+function getLengthOfMissingArray(arrayOfArrays) {
+    if (!arrayOfArrays || arrayOfArrays.length === 0)
+        return 0;
+    let arrs = arrayOfArrays.map((arr) => arr);
+    if (arrs.some(v => v.length === 0))
+        return 0;
+    let sortArrs = arrs.sort((a, b) => a.length - b.length);
+    let result = 0;
+    let startAt = sortArrs[0].length;
+    for (let index = 0; index < sortArrs.length; index++) {
+        const element = sortArrs[index];
+        if (element.length !== (index + startAt)) {
+            result = (index + startAt);
+            break;
+        }
+    }
+    return result;
+}
+exports.getLengthOfMissingArray = getLengthOfMissingArray;
+// 6 kyu : A Rule of Divisibility by 13
+function thirt(n) {
+    let result = n;
+    function calc(source) {
+        // 1, 10, 9, 12, 3, 4
+        let mult = [1, 10, 9, 12, 3, 4];
+        let nString = source.toString().split('').map(Number).reverse();
+        let results = nString.map((v, i) => {
+            return v * mult[i % 6];
+        });
+        let red = results.reduce((a, b) => a + b);
+        if (red.toString().length > 2) {
+            calc(red);
+        }
+        else {
+            result = red;
+        }
+    }
+    calc(result);
+    return result;
+}
+exports.thirt = thirt;
