@@ -351,3 +351,69 @@ function encode(str, n) {
     return r;
 }
 exports.encode = encode;
+// 7 kyu : Growth of a Population
+function nbYear(p0, percent, aug, p) {
+    let loop = 0;
+    while (p0 < p) {
+        p0 = p0 + (p0 * (percent / 100) + aug);
+        loop++;
+    }
+    return loop;
+}
+exports.nbYear = nbYear;
+//7 kyu : Averages of numbers
+function averages(numbers) {
+    if (!numbers || numbers.length <= 1)
+        return [];
+    let results = new Array();
+    let reduces = numbers.reduce((a, b) => {
+        let r = (a + b);
+        let avr = r / 2;
+        results.push(avr);
+        return b;
+    });
+    return results;
+}
+exports.averages = averages;
+function feast(beast, dish) {
+    return (beast[0] === dish.charAt(0) && beast.charAt(beast.length - 1) === dish.charAt(dish.length - 1)) ? true : false;
+}
+exports.feast = feast;
+function positiveSum(arr) {
+    return (arr.length == 0) ? 0 : arr.reduce((a, b) => {
+        return a + ((b >= 0) ? b : 0);
+    }, 0);
+}
+exports.positiveSum = positiveSum;
+function findSmallestInt(args) {
+    let sorts = args.sort((a, b) => a - b);
+    return sorts[0];
+}
+exports.findSmallestInt = findSmallestInt;
+// 8 kyu : Fake Binary
+exports.fakeBin = (x) => {
+    let str = x.split("").map(Number).map((v, i, a) => {
+        return (v < 5) ? "0" : "1";
+    }).join("");
+    return str;
+};
+//7 kyu : Vowel Count
+function getCount(str) {
+    let newStr = str.match(/a|e|i|o|u/gi);
+    return (newStr && newStr.length) ? newStr.length : 0;
+}
+exports.getCount = getCount;
+function xor(a, b) {
+    const i = (a) ? 1 : 0;
+    const j = (b) ? 1 : 0;
+    return ((i ^ j) == 1) ? true : false;
+}
+exports.xor = xor;
+function repeatStr(n, s) {
+    let r = "";
+    for (let i = 1; i < n; i++) {
+        r = r + s.toString();
+    }
+    return r;
+}
+exports.repeatStr = repeatStr;

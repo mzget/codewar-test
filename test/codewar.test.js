@@ -66,7 +66,33 @@ const Codewar = __importStar(require("../codewar"));
 //     expect(Codewar.dnaStrand("ATTGC")).toBe("TAACG");
 //     expect(Codewar.dnaStrand("GTAT")).toBe("CATA");
 // });
-test('Digital cypher', () => {
-    expect(Codewar.encode("scout", 1939)).toEqual([20, 12, 18, 30, 21]);
-    expect(Codewar.encode("masterpiece", 1939)).toEqual([14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]);
+// test('Digital cypher', () => {
+//     expect(Codewar.encode("scout", 1939)).toEqual([20, 12, 18, 30, 21]);
+//     expect(Codewar.encode("masterpiece", 1939)).toEqual([14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8]);
+// });
+// test('Growth of a Population', () => {
+//     expect(Codewar.nbYear(1500, 5, 100, 5000)).toBe(15);
+//     expect(Codewar.nbYear(1500000, 2.5, 10000, 2000000)).toBe(10);
+//     expect(Codewar.nbYear(1500000, 0.25, 1000, 2000000)).toBe(94);
+//     expect(Codewar.nbYear(1500000, 0.25, -1000, 2000000)).toBe(151);
+// });
+// test('Averages of numbers', () => {
+//     expect(Codewar.averages([2, 2, 2, 2, 2])).toEqual([2, 2, 2, 2]);
+//     expect(Codewar.averages([2, -2, 2, -2, 2])).toEqual([0, 0, 0, 0]);
+//     expect(Codewar.averages([1, 3, 5, 1, -10])).toEqual([2, 4, 3, -4.5]);
+// });
+// test('Averages of numbers', () => {
+//     expect(Codewar.findSmallestInt([78, 56, 232, 12, 8])).toBe(8);
+// });
+// test('Averages of numbers', () => {
+//     expect(Codewar.findSmallestInt([78, 56, 232, 12, 8])).toBe(8);
+// });
+// assert.equal(solution.fakeBin('45385593107843568'), '01011110001100111');
+// assert.equal(solution.fakeBin('509321967506747'), '101000111101101');
+// assert.equal(solution.fakeBin('366058562030849490134388085'), '011011110000101010000011011'); 
+// test('Fake Binary', () => {
+//     expect(Codewar.fakeBin("45385593107843568")).toBe("01011110001100111");
+// });
+test('Vowel Count', () => {
+    expect(Codewar.getCount("Abracadabra")).toBe(5);
 });

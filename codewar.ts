@@ -383,3 +383,70 @@ export function encode(str: String, n: number): number[] {
     })
     return r;
 }
+
+// 7 kyu : Growth of a Population
+export function nbYear(p0, percent, aug, p) {
+    let loop = 0;
+    while (p0 < p) {
+        p0 = p0 + (p0 * (percent / 100) + aug);
+        loop++;
+    }
+    return loop;
+}
+
+//7 kyu : Averages of numbers
+export function averages(numbers: number[]): number[] {
+    if (!numbers || numbers.length <= 1) return [];
+
+    let results = new Array();
+    let reduces = numbers.reduce((a, b) => {
+        let r = (a + b);
+        let avr = r / 2;
+        results.push(avr);
+        return b;
+    });
+    return results;
+}
+
+export function feast(beast: string, dish: string): boolean {
+    return (beast[0] === dish.charAt(0) && beast.charAt(beast.length - 1) === dish.charAt(dish.length - 1)) ? true : false;
+}
+
+export function positiveSum(arr: number[]): number {
+    return (arr.length == 0) ? 0 : arr.reduce((a, b) => {
+        return a + ((b >= 0) ? b : 0);
+    }, 0);
+}
+
+export function findSmallestInt(args: number[]): number {
+    let sorts = args.sort((a, b) => a - b);
+    return sorts[0];
+}
+
+// 8 kyu : Fake Binary
+export const fakeBin = (x: string): string => {
+    let str = x.split("").map(Number).map((v, i, a) => {
+        return (v < 5) ? "0" : "1";
+    }).join("");
+
+    return str;
+};
+
+//7 kyu : Vowel Count
+export function getCount(str: string) {
+    let newStr = str.match(/a|e|i|o|u/gi);
+    return (newStr && newStr.length) ? newStr.length : 0;
+}
+
+export function xor(a: boolean, b: boolean): boolean {
+    const i = (a) ? 1 : 0;
+    const j = (b) ? 1 : 0;
+    return ((i ^ j) == 1) ? true : false;
+}
+export function repeatStr(n: number, s: String): String {
+    let r = "";
+    for (let i = 1; i < n; i++) {
+        r = r + s.toString();
+    }
+    return r;
+}
