@@ -303,12 +303,13 @@ function isAllPossibilities(x) {
 exports.isAllPossibilities = isAllPossibilities;
 // 7 kyu : Complementary DNA
 function dnaStrand(dna) {
-    let T = dna.replace(/A|T|G|C/gi, (v, i, a) => {
+    let T = dna.replace(/A|T|G|C/gi, function (v, i, a) {
         switch (v) {
             case "A": return "T";
             case "T": return "A";
             case "C": return "G";
             case "G": return "C";
+            default: return "";
         }
     });
     return T;
@@ -417,3 +418,102 @@ function repeatStr(n, s) {
     return r;
 }
 exports.repeatStr = repeatStr;
+// 6 kyu : Steps in Primes
+exports.step = (g, m, n) => {
+    let source = Array.from({ length: (n - m) + 1 }).map((v, i) => {
+        return m + i;
+    });
+    let primes = source.filter(n => {
+        var m = Math.sqrt(n);
+        var isPrime = true;
+        for (var i = 2; i <= m; i++) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime)
+            return n;
+    });
+    let res = new Array();
+    for (let index = 0; index < primes.length; index++) {
+        const prime = primes[index];
+        for (let loop2 = index; loop2 < primes.length; loop2++) {
+            const prime2 = primes[loop2];
+            if (prime2 - prime == g) {
+                res = [prime, prime2];
+                index = prime.length;
+            }
+        }
+    }
+    return (res.length === 0) ? null : res;
+};
+// 5 kyu : A Chain adding function
+// export function add(fn): any {
+//     if (typeof fn === "function") {
+//         return (x) => {
+//             if (fn.length <= 1) {
+//                 return fn(x);
+//             }
+//             return add(fn.bind(null, x));
+//         };
+//     }
+// }
+// function strictCurry(fn) {
+//     return (x) => {
+//         if (fn.length <= 1) {
+//             return fn(x);
+//         }
+//         return strictCurry(fn.bind(null, x));
+//     };
+// }
+function curry(fn) {
+    return (...xs) => {
+        if (xs.length === 0) {
+            throw Error('EMPTY INVOCATION');
+        }
+        if (xs.length >= fn.length) {
+            return fn(...xs);
+        }
+        return curry(fn.bind(null, ...xs));
+    };
+}
+function magician(targetfn) {
+    var numOfArgs = targetfn.length;
+    console.log(targetfn);
+    if (arguments.length - 1 < numOfArgs) {
+        return magician.bind(null, ...arguments);
+    }
+    else {
+        return targetfn.apply(null, Array.prototype.slice.call(arguments, 1));
+    }
+    // return function fn(...a) {
+    //     console.log(arguments.length, arguments, numOfArgs)
+    //     if (arguments.length < numOfArgs) {
+    //         return fn.bind(null, ...arguments);
+    //     } else {
+    //         return targetfn.apply(null, arguments);
+    //     }
+    // }
+}
+function strictCurry(fn) {
+    return (x) => {
+        if (fn.length <= 1) {
+            return fn(x);
+        }
+        return strictCurry(fn.bind(null, x));
+    };
+}
+const sum = (x, y, z, a) => {
+    // return   ...args.reduce((a, b) => a + b);
+    return x + y + z + a;
+};
+function add(x) {
+    // const r = magician(sum)(x);
+    const r = cur(sum)(x);
+    console.log(x, r);
+    return r;
+}
+exports.default = add;
+const cur = fn => (...args) => fn.bind(null, ...args);
+console.log(add(1)(2)(3)(4));

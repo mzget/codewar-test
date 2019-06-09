@@ -109,6 +109,20 @@ import * as Codewar from "../codewar";
 //     expect(Codewar.fakeBin("45385593107843568")).toBe("01011110001100111");
 // });
 
-test('Vowel Count', () => {
-    expect(Codewar.getCount("Abracadabra")).toBe(5);
+// test('Vowel Count', () => {
+//     expect(Codewar.getCount("Abracadabra")).toBe(5);
+// });
+
+// test('Steps in Primes', () => {
+//     expect(Codewar.step(2, 100, 110)).toEqual([101, 103]);
+//     expect(Codewar.step(4, 100, 110)).toEqual([103, 107]);
+//     expect(Codewar.step(6, 100, 110)).toEqual([101, 107]);
+//     expect(Codewar.step(8, 300, 400)).toEqual([359, 367]);
+//     expect(Codewar.step(10, 300, 400)).toEqual([307, 317]);
+// });
+
+test('A Chain adding function', () => {
+    //assert(add(1)(2) == 3);
+    expect(Codewar.add(1)(2)).toBe(3);
+    expect(Codewar.add(1)(2)(3)(4)(5)).toBe(15);
 });

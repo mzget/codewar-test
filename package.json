@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^3.5.1"
+  },
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "ts-jest": "^23.1.3"
